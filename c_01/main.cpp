@@ -65,7 +65,7 @@ void SwapValue(int m, int n)
     cout << "SwapValue: \t\tm=" << m << ", n=" << n << endl;
 }
 
-void SwapRef(int & m, int & n)\
+void SwapRef(int & m, int & n)
 {
     int tmp;
     tmp = m;
