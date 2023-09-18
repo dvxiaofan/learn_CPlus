@@ -1,80 +1,92 @@
+
+#include <iostream>
+
+using namespace::std;
+
+//1. 分别用字符和ASCII码形式输出整数值65和66.
+//int main()
+//{
+//    int num1(55), num2(56);
 //
-//  main.cpp
-//  c_01
+//    cout << "字符型: " << (char)num1 << ' ' << (char)num2 << endl;
+//    cout << "ASSII码：" << num1 << ' ' << num2 << endl;
 //
-//  Created by 张艳坤 on 2023/8/22.
+//    return 0;
+//}
+
+// 2. 编写一个int型变量分配100个整形空间
+//int main()
+//{
+//    int *p;
+//
+//    p = new int[100];
+//
+//    delete []p;
+//
+//    return 0;
+//}
 //
 
-# include <iostream>
 
-using namespace std;
+//int main()
+//{
+//    float * p;
+//    float sum = 0;
+//
+//    p=new float[15];
+//    cout << "请输入15个数：";
+//    for (int i = 0; i < 15; i++)
+//    {
+//        cin >> p[i];
+//    }
+//    sort(p, p+15);
+//
+//    for (int i = 0; i < 15; i++)
+//    {
+//        cout << p[i] << ' ';
+//        sum += p[i];
+//    }
+//
+//    cout << endl << "sum is: " << sum << endl;
+//    cout << "min is: " << p[0] << endl;
+//
+//    delete []p;
+//
+//    return 0;
+//}
 
-// 定义一个学生类
-class Student
+void SwapValue(int m, int n)
 {
-public:
-    // 成员变量
-    int age;
-    int score;
+    int tmp;
+    tmp = m;
+    m = n;
+    n = tmp;
+    
+    cout << "SwapValue: \t\tm=" << m << ", n=" << n << endl;
+}
 
-    // 成员函数
-    void say()
-    {
-        cout << "age = " << age << ", score = " << score << endl;
-    }
-};
+void SwapRef(int & m, int & n)\
+{
+    int tmp;
+    tmp = m;
+    m = n;
+    n = tmp;
+    
+    cout << "SwapRef: \t\tm=" << m << ", n=" << n << endl;
+}
 
 int main()
 {
-    // 通过类创建对象
-    Student stu;
-    stu.age = 18;
-    stu.score = 100;
-    stu.say();
-
+    int a = 10, b = 20;
+    cout << "Before: \t\ta=" << a << ", b=" << b << endl << endl;
+    
+    SwapValue(a, b);
+    cout << "After SwapValue:a=" << a << ", b=" << b << endl << endl;
+    
+    a = 10;
+    b = 20;
+    SwapRef(a, b);
+    cout << "After SwapRef: \ta=" << a << ", b=" << b << endl << endl;
+    
     return 0;
 }
-
-
-class Box
-{
-private:
-    double width;
-
-public:
-    double length;
-
-    void setWidth(double x);
-
-    double getWidth();
-};
-
-void Box::setWidth(double x)
-{
-    width = x;
-}
-
-double Box::getWidth()
-{
-    return width;
-}
-
-
-int main()
-{
-    Box box;
-
-    box.length = 100;
-
-    box.setWidth(55.5);
-
-    double tempWidth = box.getWidth();
-
-    cout << "box lenght = " << box.length << endl;
-    cout << "tempWidth = " << tempWidth << endl;
-
-    return 0;
-}
-
-
-
