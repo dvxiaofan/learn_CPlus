@@ -55,38 +55,38 @@ using namespace::std;
 //    return 0;
 //}
 
-void SwapValue(int m, int n)
+int bigger(int a, int b)
 {
-    int tmp;
-    tmp = m;
-    m = n;
-    n = tmp;
-    
-    cout << "SwapValue: \t\tm=" << m << ", n=" << n << endl;
+    cout << "Hello Int" << endl;
+    if (a > b) return a;
+    else return b;
 }
 
-void SwapRef(int & m, int & n)
+float bigger(float a, float b)
 {
-    int tmp;
-    tmp = m;
-    m = n;
-    n = tmp;
-    
-    cout << "SwapRef: \t\tm=" << m << ", n=" << n << endl;
+    cout << "Hello Float" << endl;
+    if (a > b) return a; 
+    else return b;
 }
 
 int main()
 {
-    int a = 10, b = 20;
-    cout << "Before: \t\ta=" << a << ", b=" << b << endl << endl;
+    float a = 103.2, b = 20.3;
     
-    SwapValue(a, b);
-    cout << "After SwapValue:a=" << a << ", b=" << b << endl << endl;
+    cout << bigger(a, b) << endl;
     
-    a = 10;
-    b = 20;
-    SwapRef(a, b);
-    cout << "After SwapRef: \ta=" << a << ", b=" << b << endl << endl;
+    
+    
+    
+//    cout << "Before: \t\ta=" << a << ", b=" << b << endl << endl;
+    
+//    SwapValue(a, b);
+//    cout << "After SwapValue:a=" << a << ", b=" << b << endl << endl;
+//
+//    a = 10;
+//    b = 20;
+//    SwapRef(a, b);
+//    cout << "After SwapRef: \ta=" << a << ", b=" << b << endl << endl;
     
     return 0;
 }
