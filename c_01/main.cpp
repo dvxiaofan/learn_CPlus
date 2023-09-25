@@ -65,7 +65,7 @@ int bigger(int a, int b)
 float bigger(float a, float b)
 {
     cout << "Hello Float" << endl;
-    if (a > b) return a; 
+    if (a > b) return a;
     else return b;
 }
 
