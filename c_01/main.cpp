@@ -20,7 +20,7 @@ public:
     
     void print()
     {
-        cout << Y << "";
+        cout << Y << " ";
     }
 };
 
