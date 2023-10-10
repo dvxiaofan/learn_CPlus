@@ -3,62 +3,57 @@
 #include <cmath>
 using namespace::std;
 
-class myComplex
+class CDemo
 {
 private:
-    double real, imag;
+    int n;
 public:
-    myComplex();
-    myComplex(double, double);
-    void outCom();
-    myComplex operator-(const myComplex &c);
-    friend myComplex operator+(const myComplex &c1, const myComplex &c2);
+    CDemo(int i=0):n(i){}
+    CDemo & operator++();
+    CDemo & operator++(int);
+    operator int() { return n; }
+    
+    CDemo & operator--();
+    CDemo & operator--(int);
 };
 
-myComplex::myComplex()
+CDemo & CDemo::operator++()
 {
-    real = 0;
-    imag = 0;
+    n++;
+    return *this;
 }
 
-myComplex::myComplex(double r, double i)
+CDemo & CDemo::operator++(int k)
 {
-    real = r;
-    imag = i;
+    CDemo tmp(*this);
+    n++;
+    return tmp;
 }
 
-void myComplex::outCom()
+CDemo & CDemo::operator--()
 {
-    cout << "(" << real << "," << imag << ")";
+    n--;
+    return *this;
 }
 
-myComplex myComplex::operator - (const myComplex &c)
+CDemo & CDemo::operator--(int k)
 {
-    return myComplex(this -> real - c.real, this -> imag - c.imag);
-}
-
-myComplex operator+(const myComplex &c1, const myComplex &c2)
-{
-    return myComplex(c1.real + c2.real, c1.imag + c2.imag);
+    CDemo tmp(*this);
+    n--;
+    return tmp;
 }
 
 int main()
 {
-    myComplex c1(1, 2), c2(3, 4), res;
-    c1.outCom();
-    cout << "operatou+";
-    c2.outCom();
-    cout << "=";
-    res = c1 + c2;
-    res.outCom();
-    cout << endl;
-    c1.outCom();
-    cout << "operator-";
-    c2.outCom();
-    cout << "=";
-    res = c1 - c2;
-    res.outCom();
-    cout << endl;
+    CDemo d(10);
+    cout<<(d++)<<",";
+    cout<<d<<",";
+    cout<<(++d)<<",";
+    cout<<d<<",";
+    cout<<(d--)<<",";
+    cout<<d<<",";
+    cout<<(--d)<<",";
+    cout<<d<<endl;
     
     return 0;
 }
