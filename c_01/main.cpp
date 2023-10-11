@@ -3,52 +3,47 @@
 #include <cmath>
 using namespace::std;
 
-class Base
-{
-private:
-    int Y;
+class A {
 public:
-    Base(int y = 0)
-    {
-        Y = y;
-        cout << "Base(" << y << ")" << endl;
+    virtual void print() {
+        cout << "aaaa" << endl;
     }
-    ~Base()
-    {
-        cout << "~Base()" << endl;
+};
+
+class B:public A {
+public:
+    virtual void print() {
+        cout << "bbbb" << endl;
     }
+};
+
+class D:public A {
+public:
+    virtual void print() {
+        cout << "dddd" << endl;
+    }
+};
+
+class E:public B {
+public:
+    virtual void print() {
+        cout << "eeee" << endl;
+    }
+};
+
+int main() {
+    A a; B b; D d; E e;
+    A *pa = &a;
+    B *pb = &b;
+    pa -> print();
+    pa = pb;
+    pa -> print();
+    pa = &d;
+    pa -> print();
+    pa = &e;
+    pa -> print();
     
-    void print()
-    {
-        cout << Y << " ";
-    }
-};
-
-class Derived:public Base
-{
-private:
-    int Z;
-public:
-    Derived(int y, int z):Base(y)
-    {
-        Z = z;
-        cout << "Derived(" << y << "," << z << ")" << endl;
-    }
-    ~Derived()
-    {
-        cout << "~Derived()" << endl;
-    }
-    void print()
-    {
-        Base::print();
-        cout << Z << endl;
-    }
-};
-
-int main()
-{
-    Derived d(10, 20);
-    d.print();
-
     return 0;
 }
+
+
