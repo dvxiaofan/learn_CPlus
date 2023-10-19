@@ -1,39 +1,26 @@
 
 #include <iostream>
-#include <cmath>
+#include <fstream>
+#include <iomanip>
 using namespace::std;
 
-class TBase{
-    int k;
-public:
-    void print()
-    {
-        cout << "TBase::" << k << endl;
-    }
-};
-
-template<class T>
-class TDerived:public TBase
-{
-    T data;
-public:
-    void setData(T x)
-    {
-        data = x;
-    }
-    void print()
-    {
-        TBase::print();
-        
-        cout << "TDerived:: " << data << endl;
-    }
-};
 
 
 int main() {
-    TDerived<string>d;
-    d.setData("2023");
-    d.print();
+    char id[11], name[2];
+    int score;
+    ifstream inFile;
+    inFile.open("score.txt", ios::in);
+    if(!inFile)
+    {
+        cout << "open fail" << endl;
+        return 0;
+    }
+    cout << "num name \t\t\t score \n";
+    while (inFile >> id >> name >> score) {
+        cout << left << setw(10) << id << "" << setw(20) << name << "" << setw(3) << right << score << endl;
+    }
+    inFile.close();
     return 0;
 }
 
