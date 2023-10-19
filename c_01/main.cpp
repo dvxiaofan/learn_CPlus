@@ -3,46 +3,37 @@
 #include <cmath>
 using namespace::std;
 
-class A {
+class TBase{
+    int k;
 public:
-    virtual void print() {
-        cout << "aaaa" << endl;
+    void print()
+    {
+        cout << "TBase::" << k << endl;
     }
 };
 
-class B:public A {
+template<class T>
+class TDerived:public TBase
+{
+    T data;
 public:
-    virtual void print() {
-        cout << "bbbb" << endl;
+    void setData(T x)
+    {
+        data = x;
+    }
+    void print()
+    {
+        TBase::print();
+        
+        cout << "TDerived:: " << data << endl;
     }
 };
 
-class D:public A {
-public:
-    virtual void print() {
-        cout << "dddd" << endl;
-    }
-};
-
-class E:public B {
-public:
-    virtual void print() {
-        cout << "eeee" << endl;
-    }
-};
 
 int main() {
-    A a; B b; D d; E e;
-    A *pa = &a;
-    B *pb = &b;
-    pa -> print();
-    pa = pb;
-    pa -> print();
-    pa = &d;
-    pa -> print();
-    pa = &e;
-    pa -> print();
-    
+    TDerived<string>d;
+    d.setData("2023");
+    d.print();
     return 0;
 }
 
